@@ -1,0 +1,12 @@
+%
+% Python dependencies for the pipeline
+%
+pandas>=2.1.0
+geopandas>=0.14.0
+shapely>=2.0.0
+pyarrow>=12.0.0
+geojson>=3.0.0
+networkx>=3.0
+gotrackit>=0.3.5
+fiona>=1.9.0
+
