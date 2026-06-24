@@ -2,6 +2,8 @@
 
 本项目提供从路网 CSV 到 HMM 地图匹配与结果可视化的一键化流水线，覆盖：数据构建、坐标系统一、匹配执行与结果导出。
 
+English summary: this repository provides a Python pipeline for road-network conversion, coordinate normalization, HMM map matching, and exportable matching metrics.
+
 ## 目录
 - pipeline.py：参数化一键脚本
 - 实现匹配的代码.py：原匹配脚本（将被 pipeline 替代）
@@ -12,6 +14,12 @@
 1. 安装依赖
 ```bash
 pip install -r requirements.txt
+```
+
+也可以使用项目配置安装：
+
+```bash
+pip install .
 ```
 
 2. 准备输入
@@ -39,6 +47,19 @@ python pipeline.py --network-csv "./2024-02-10 11-30_network.csv" \
 - 坐标系务必确认：若路网/轨迹为 GCJ-02，请使用 --crs-in gcj02。
 - 若需自定义匹配参数（gps_buffer/top_k/gps_radius 等），可在 pipeline.py 中修改 _map_match 内的 MapMatch 初始化参数。
 - 大规模数据建议分片运行（按城市/日期/时间窗），并缓存子图以提升吞吐。
+
+## 质量保障
+
+仓库已配置 GitHub Actions，对 `master` / `main` 分支和 Pull Request 执行基础校验：
+
+- 编译所有 Python 脚本，提前发现语法错误
+- 检查依赖清单是否存在关键依赖
+
+下一步建议补充一份脱敏的最小样例数据，并为以下函数添加单元测试：
+
+- `_create_nodes_links_from_network`
+- `_gcj02_to_wgs84`
+- `_read_network_csv`
 
 ## 许可
 仅供学习与研究使用。

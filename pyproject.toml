@@ -1,0 +1,19 @@
+[project]
+name = "one-for-map-matching"
+version = "0.1.0"
+description = "A Python pipeline for road-network conversion, HMM map matching, and result export."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.1.0",
+  "geopandas>=0.14.0",
+  "shapely>=2.0.0",
+  "pyarrow>=12.0.0",
+  "geojson>=3.0.0",
+  "networkx>=3.0",
+  "gotrackit>=0.3.5",
+  "fiona>=1.9.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
